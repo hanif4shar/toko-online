@@ -2,8 +2,7 @@ var express = require("express");
 var path = require('path');
 var mongoose = require('mongoose');
 var config = require('./config/database');
-// Set routes
-var pages = require('./routes/pages');
+
 // Initial app
 var app = express();
 
@@ -22,11 +21,13 @@ app.set('view engine','ejs');
 // setup public folder
 app.use(express.static(path.join(__dirname,'public')));
 
-
+// Set routes
+var pages = require('./routes/pages');
+var adminPages = require('./routes/admin_pages');
 
 // Redirect
 app.use('/',pages);
-
+app.use('/admin/pages',adminPages);
 
 // Setup server
 var port = 3000;
