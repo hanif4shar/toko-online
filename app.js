@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname,'public')));
 
 // setup index
 app.get('/', function(req,res){
-    res.send('Ini adalah index , sudah konek ke mongo');
+    res.send('Ini adalah index , sudah konek ke mongosss');
 });
 
 
