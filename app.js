@@ -2,11 +2,12 @@ var express = require("express");
 var path = require('path');
 var mongoose = require('mongoose');
 var config = require('./config/database');
-
+// Set routes
+var pages = require('./routes/pages');
 // Initial app
 var app = express();
 
-//connetion syntax
+//connetion db syntax
 mongoose.connect(config.database);
 var db=mongoose.connection;
 db.on('error',console.error.bind(console,"connection error :"));
@@ -21,10 +22,10 @@ app.set('view engine','ejs');
 // setup public folder
 app.use(express.static(path.join(__dirname,'public')));
 
-// setup index
-app.get('/', function(req,res){
-    res.send('Ini adalah index , sudah konek ke mongosss coba ubah lagi');
-});
+
+
+// Redirect
+app.use('/',pages);
 
 
 // Setup server
